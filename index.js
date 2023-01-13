@@ -1,5 +1,6 @@
 import scrape from 'website-scraper'; 
 const websiteUrl = process.argv.slice(2)[0];
+const dirname = websiteUrl.split('://')[1];
 
 scrape({ 
     urls: [websiteUrl], 
@@ -10,7 +11,7 @@ scrape({
     maxDepth: 50, 
     prettifyUrls: true, 
     filenameGenerator: 'bySiteStructure', 
-    directory: './Scraped-Website' 
+    directory: `./Scraped-Website/${dirname}` 
 }).then((data) => { 
     console.log("Entire website succesfully downloaded"); 
 }).catch((err) => { 
